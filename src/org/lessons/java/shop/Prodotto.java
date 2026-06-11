@@ -2,18 +2,21 @@ package org.lessons.java.shop;
 
 import java.util.Random;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Prodotto {
 
-    int code;
-    String name;
-    String description;
-    float price;
-    int iva;
+    public int code;
+    public String name;
+    public String description;
+    public BigDecimal price;
+    public BigDecimal iva;
 
     Random rand = new Random();
 
-    public Prodotto(String name, String description, float price, int iva) {
-        this.code = rand.nextInt(50);
+    public Prodotto(String name, String description, BigDecimal price, BigDecimal iva) {
+        this.code = rand.nextInt(99999);
         this.name = name;
         this.description = description;
         this.price = price;
@@ -21,19 +24,26 @@ public class Prodotto {
 
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public void stampPrice() {
-        System.out.println(this.price);
+    public BigDecimal getPrezzoBase() {
+        return this.price;
     }
 
-    public float getPriceWithIva() {
-        return this.price + ((this.price * this.iva) / 100);
+    public BigDecimal getPriceWithIva() {
+        if (price != null && iva != null) {
+            // verifica che sia inizializzata la variabile di istanza
+            return price.add(price.multiply(iva).setScale(2, RoundingMode.DOWN));
+        }
+        return null;
     }
 
     public String getNameExtension() {
-        return code + "-" + name;
+        if (name != null) {
+            return code + "-" + name;
+        }
+        return null;
     }
 }
