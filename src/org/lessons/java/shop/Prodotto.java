@@ -13,6 +13,13 @@ public class Prodotto {
     public BigDecimal price;
     public BigDecimal iva;
 
+    // nuove variabili d istanza
+    private int codice;
+    private String nome;
+    private String marca;
+    private BigDecimal prezzo;
+    private BigDecimal iva2;
+
     Random rand = new Random();
 
     public Prodotto(String name, String description, BigDecimal price, BigDecimal iva) {
@@ -24,6 +31,41 @@ public class Prodotto {
 
     }
 
+    // Incapsulamento
+    public Prodotto() {
+        this.codice = rand.nextInt(99999);
+        this.nome = "nome";
+        this.marca = "marca";
+        this.prezzo = new BigDecimal(300);
+        this.iva2 = new BigDecimal(0.22);
+    }
+
+    public Prodotto(BigDecimal iva2, String nome, String marca, BigDecimal prezzo) {
+        this.codice = rand.nextInt(99999);
+        this.nome = nome;
+        this.marca = marca;
+        this.prezzo = prezzo;
+        this.iva2 = iva2;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        if (this.nome != null) {
+            this.nome = nome;
+        }
+    }
+
+
+
+
+
+
+
+
+    
     public void setPrice(BigDecimal price) {
         this.price = price;
     }

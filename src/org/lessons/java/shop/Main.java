@@ -17,5 +17,16 @@ public class Main {
         System.out.println(penna.getPrezzoBase());
         System.out.println(penna.getPriceWithIva());
 
+        Prodotto computer = new Prodotto(new BigDecimal(0.22), "LOQ Notebook 15", "Lenovo", new BigDecimal(3000));
+
+        System.out.println(computer.getNome());
+        computer.setNome("LOQ Notebook 14");
+        System.out.println(computer.getNome());
+        
+        Prodotto base = new Prodotto();
+        
+        System.out.println(base.getNome());
+        base.setNome("Nuovo Nome");
+        System.out.println(base.getNome());
     }
 }
